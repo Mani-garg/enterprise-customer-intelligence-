@@ -104,29 +104,4 @@ python main.py
 
 ---
 
-## 5. Resume Bullet Points to Use
-
-Add these directly to your CV/Resume under Projects:
-
-- **Enterprise Customer 360: Predictive Churn & Autonomous AI Retention Agent**
-  - Engineered a distributed big-data feature pipeline using **PySpark**, processing 50,000+ daily usage events to calculate 30-day velocity trends and service friction metrics.
-  - Developed and deployed an ensemble **Gradient Boosting** churn prediction model achieving **100% ROC-AUC**, categorizing 2,000 enterprise accounts into granular risk tiers.
-  - Implemented an autonomous **Generative AI Agent (LangChain / ReAct pattern)** with **RAG** over enterprise retention policies to automatically formulate personalized concession offers with strict financial guardrails.
-  - Built an interactive executive dashboard displaying revenue-at-risk and real-time agent reasoning traces for senior leadership.
-
----
-
-## 6. Interview Pitch (STAR Method)
-
-When asked: *"Tell me about an end-to-end AI project you worked on."*
-
-> **Situation:** "Telecom and SaaS providers experience severe revenue loss when high-value accounts churn due to unresolved technical friction and billing disputes."
->
-> **Task:** "My goal as an AI Analyst was to build a system that not only predicts churn ahead of time, but also autonomously intervenes to retain accounts."
->
-> **Action:** 
-> 1. "I wrote a **PySpark** pipeline to aggregate 50,000+ granular logs and extract behavioral metrics like rolling usage drop and call-drop velocity."
-> 2. "I trained a **Gradient Boosting** model to score churn risk and ranked top drivers via feature importance."
-> 3. "Finally, I built a **LangChain-style ReAct Agent** with **RAG**. When a customer hits Critical Risk, the agent reads their past support tickets, queries authorized company retention policies, enforces discount limits (<25%), and drafts an individualized retention package."
->
 > **Result:** "The solution provides 100% visibility into high-risk accounts, protects monthly revenue, and reduces customer retention turnaround time from 3 days to seconds."
