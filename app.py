@@ -129,7 +129,8 @@ HTML_PAGE = """<!DOCTYPE html>
 
         /* GRIDS & CARDS */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
-        .panel-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 20px; }
+        .panel-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 20px; min-width: 0; }
+        .chart-box { position: relative; height: 240px; width: 100%; min-width: 0; }
         .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .panel-title { font-size: 13px; font-weight: 600; color: var(--text-heading); display: flex; align-items: center; gap: 8px; }
         .panel-tag { font-size: 11px; background: rgba(255,255,255,0.06); padding: 3px 8px; border-radius: 4px; color: var(--text-muted); font-family: var(--font-mono); }
@@ -252,14 +253,18 @@ HTML_PAGE = """<!DOCTYPE html>
                             <span class="panel-title">Portfolio Risk Distribution</span>
                             <span class="panel-tag">PySpark Window Aggregations</span>
                         </div>
-                        <canvas id="riskDoughnut" height="190"></canvas>
+                        <div class="chart-box">
+                            <canvas id="riskDoughnut"></canvas>
+                        </div>
                     </div>
                     <div class="panel-card">
                         <div class="panel-header">
                             <span class="panel-title">Top Machine Learning Churn Drivers</span>
                             <span class="panel-tag">Gradient Boosting Feature Importance</span>
                         </div>
-                        <canvas id="featureBar" height="190"></canvas>
+                        <div class="chart-box">
+                            <canvas id="featureBar"></canvas>
+                        </div>
                     </div>
                 </div>
 
@@ -476,46 +481,73 @@ HTML_PAGE = """<!DOCTYPE html>
             `;
             document.getElementById('kpi-cards-grid').innerHTML = kpiHtml;
 
-            // Render Charts
-            new Chart(document.getElementById('riskDoughnut'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Critical Risk', 'High Risk', 'Medium Risk', 'Low Risk'],
-                    datasets: [{
-                        data: [data.critical_count, data.high_count, data.medium_count, data.low_count],
-                        backgroundColor: ['#f43f5e', '#f59e0b', '#06b6d4', '#10b981'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 } } } }
-                }
-            });
-
-            new Chart(document.getElementById('featureBar'), {
-                type: 'bar',
-                data: {
-                    labels: data.metrics.top_features.map(f => f.Feature),
-                    datasets: [{
-                        label: 'Feature Importance (%)',
-                        data: data.metrics.top_features.map(f => (f.Importance * 100).toFixed(1)),
-                        backgroundColor: '#3b82f6',
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    scales: {
-                        x: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: '#1e293b' } },
-                        y: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { display: false } }
+            // Render Charts safely with instance management
+            if (window.riskChartInstance) {
+                window.riskChartInstance.destroy();
+            }
+            const riskCanvas = document.getElementById('riskDoughnut');
+            if (riskCanvas) {
+                window.riskChartInstance = new Chart(riskCanvas, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Critical Risk', 'High Risk', 'Medium Risk', 'Low Risk'],
+                        datasets: [{
+                            data: [data.critical_count, data.high_count, data.medium_count, data.low_count],
+                            backgroundColor: ['#f43f5e', '#f59e0b', '#06b6d4', '#10b981'],
+                            borderWidth: 2,
+                            borderColor: '#131d33'
+                        }]
                     },
-                    plugins: { legend: { display: false } }
-                }
-            });
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 }, boxWidth: 12, padding: 10 }
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (window.featureChartInstance) {
+                window.featureChartInstance.destroy();
+            }
+            const featureCanvas = document.getElementById('featureBar');
+            if (featureCanvas) {
+                window.featureChartInstance = new Chart(featureCanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: data.metrics.top_features.map(f => f.Feature),
+                        datasets: [{
+                            label: 'Feature Importance (%)',
+                            data: data.metrics.top_features.map(f => (f.Importance * 100).toFixed(1)),
+                            backgroundColor: '#3b82f6',
+                            borderRadius: 4,
+                            barThickness: 12
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                ticks: { color: '#64748b', font: { size: 10 } },
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                beginAtZero: true
+                            },
+                            y: {
+                                ticks: { color: '#cbd5e1', font: { size: 10, family: 'JetBrains Mono' } },
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
 
             // Critical accounts table
             const custRes = await fetch('/api/customers?tier=CRITICAL');

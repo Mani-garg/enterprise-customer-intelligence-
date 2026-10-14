@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "timestamp": "2026-10-14 19:22:07",
+    "customer_id": "CUST_0010",
+    "risk_tier": "CRITICAL",
+    "concessions_count": 5,
+    "concessions": [
+      "Complimentary upgrade to Wi-Fi 6 Mesh Hardware Unit (Zero installation fee)",
+      "Priority Field Technician dispatch within 4 business hours",
+      "Immediate Rs. 500 billing credit adjustment on next invoice",
+      "Price lock guarantee for 12 months",
+      "15% Goodwill monthly discount applied for the next 3 billing cycles"
+    ],
+    "status": "APPROVED_BY_MANAGER"
+  },
+  {
+    "timestamp": "2026-10-14 19:22:03",
+    "customer_id": "CUST_0010",
+    "risk_tier": "CRITICAL",
+    "concessions_count": 5,
+    "concessions": [
+      "Complimentary upgrade to Wi-Fi 6 Mesh Hardware Unit (Zero installation fee)",
+      "Priority Field Technician dispatch within 4 business hours",
+      "Immediate Rs. 500 billing credit adjustment on next invoice",
+      "Price lock guarantee for 12 months",
+      "15% Goodwill monthly discount applied for the next 3 billing cycles"
+    ],
+    "status": "APPROVED_BY_MANAGER"
+  }
+]
