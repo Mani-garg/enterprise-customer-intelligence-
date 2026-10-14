@@ -1,0 +1,30 @@
+# ENTERPRISE RETENTION POLICY & RESOLUTION MATRIX (V4.2)
+Confidential - For AI Decision Agents & Customer Retention Representatives
+
+1. OVERVIEW & OBJECTIVE
+Our goal is to proactively retain high-value enterprise and consumer accounts showing signs of dissatisfaction or high churn risk. AI agents and representatives must adhere to approved concession tiers based on root cause.
+
+2. ROOT CAUSE 1: NETWORK & HARDWARE DEFECTS
+- Diagnostic criteria: Account exhibits > 3 call drops/day, fiber disconnects, or hardware blinking red light.
+- Authorized Retention Actions:
+  * Dispatch Tier-1 Priority Field Technician within 4 business hours.
+  * Free hardware router upgrade to Wi-Fi 6 Mesh Unit (Zero installation fee).
+  * 15% discount for 3 billing cycles as goodwill compensation for downtime.
+
+3. ROOT CAUSE 2: BILLING DISPUTES & CHARGE ANOMALIES
+- Diagnostic criteria: Unexplained surcharge, price increase dispute, or duplicate payment charge.
+- Authorized Retention Actions:
+  * Immediate credit adjustment waiver up to Rs. 1,000 without requiring supervisor approval.
+  * Revert account to grandfathered pricing tier for 12 months.
+  * Provide 100 GB complimentary bonus high-speed data allowance.
+
+4. ROOT CAUSE 3: COMPETITOR POACHING & HIGH PRICE SENSITIVITY
+- Diagnostic criteria: Customer mentions competitor pricing or threatens plan cancellation.
+- Authorized Retention Actions:
+  * Offer Annual Loyalty Contract: 20% flat discount on base plan with complimentary OTT bundle.
+  * Zero-cost plan migration with priority bandwidth allocation.
+
+5. ESCALATION PROTOCOL & GUARDRAILS
+- Maximum authorized recurring concession cannot exceed 25% of monthly billing value.
+- Any customer with tenure > 24 months qualifies for automatic VIP Concierge routing.
+- AI Agents must always provide formal apology, explicit action breakdown, and transparent timeline.

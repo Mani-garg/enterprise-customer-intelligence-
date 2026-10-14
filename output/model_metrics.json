@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.9975,
+  "precision": 1.0,
+  "recall": 0.988,
+  "f1_score": 0.9939,
+  "roc_auc": 1.0,
+  "confusion_matrix": [
+    [
+      317,
+      0
+    ],
+    [
+      1,
+      82
+    ]
+  ],
+  "top_features": [
+    {
+      "Feature": "billing_friction_index",
+      "Importance": 0.6370307069760988
+    },
+    {
+      "Feature": "avg_call_drops",
+      "Importance": 0.20649493053562984
+    },
+    {
+      "Feature": "call_drop_rate_per_day",
+      "Importance": 0.1410205778706926
+    },
+    {
+      "Feature": "contract_type_Monthly",
+      "Importance": 0.011893713111358133
+    },
+    {
+      "Feature": "total_billing_issues",
+      "Importance": 0.0014449919568402041
+    },
+    {
+      "Feature": "usage_trend_ratio",
+      "Importance": 0.0007479439831176744
+    }
+  ]
+}
